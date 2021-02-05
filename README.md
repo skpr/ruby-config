@@ -1,6 +1,6 @@
 # Ruby Config
 
-[![CircleCI](https://circleci.com/gh/skpr/Ruby-config.svg?style=svg)](https://circleci.com/gh/skpr/Ruby-config)
+[![CircleCI](https://circleci.com/gh/skpr/ruby-config.svg?style=svg)](https://circleci.com/gh/skpr/ruby-config)
 
 A simple utility for reading skpr config from a directory, and populating
 environment variables in Ruby applications.
