@@ -8,6 +8,8 @@ workflows:
     jobs:
       - build
       - publish:
+          requires:
+            - build
           filters:
             tags:
               only: /.*/

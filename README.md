@@ -7,28 +7,28 @@ environment variables in Ruby applications.
 
 The default skpr config directory is /etc/skpr
 
-## Usage
+Install with bundler:
+
+## Installation
 
 ```
-$config = SkprConfig::create()->load();
-$config->get('foo.bar')
+bundle add skpr_config
+```
+
+## Usage
+
+```ruby
+require "skpr_config"
+
+config = SkprConfig.load
+bar = ENV['FOO']
 ```
 
 Skipper config variables will be converted to uppercase, and dots are
-converted to underscores. For example:
-
-```
-getenv('FOO_BAR')
-```
+converted to underscores.
 
 ## Testing
 
 Run tests using the following:
 
-`bin/Rubyunit`
-
-## Code Standards
-
-Run code style checks with the following:
-
-`bin/Rubycs`
+`rake test`
