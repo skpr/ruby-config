@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'skpr_config'
-  s.version     = ENV['GEM_VERSION']
+  s.version     = "0.0.0.pre"
   s.summary     = "Skpr Config"
   s.description = "A simple utility for reading skpr config from a directory, and populating environment variables."
   s.authors     = ["Kim Pepper"]

@@ -37,5 +37,6 @@ jobs:
           name: Publish gem
           command: |
             GEM_VERSION=$(git describe --tags --always)
+            sed -i "s/0.0.0.pre/$GEM_VERSION/g" skpr_config.gemspec
             gem build skpr_config.gemspec
             gem push "skpr_config-${GEM_VERSION}.gem"
