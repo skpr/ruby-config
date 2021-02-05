@@ -36,5 +36,6 @@ jobs:
       - run:
           name: Publish gem
           command: |
+            GEM_VERSION=$(git describe --tags --always)
             gem build skpr_config.gemspec
-            gem push "skpr_config-$(git describe --tags).gem"
+            gem push "skpr_config-${GEM_VERSION}.gem"
