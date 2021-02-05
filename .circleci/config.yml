@@ -3,6 +3,17 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.2
 
+workflows:
+  build:
+    jobs:
+      - build
+      - publish:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+
 jobs:
   build:
     executor: ruby/default
@@ -11,3 +22,19 @@ jobs:
       - run:
           name: Test
           command: rake test
+
+  publish:
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Set up rubygems credentials
+          command: |
+            mkdir ~/.gem
+            echo -e "---\r\n:rubygems_api_key: $RUBYGEMS_API_KEY" > ~/.gem/credentials
+            chmod 0600 /home/circleci/.gem/credentials
+      - run:
+          name: Publish gem
+          command: |
+            gem build skpr_config.gemspec
+            gem push "skpr_config-$(git describe --tags).gem"
